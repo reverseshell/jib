@@ -1,0 +1,17 @@
+jib is a jitter for the brainfuck language (http://en.wikipedia.org/wiki/Brainfuck)
+
+The main components are:
+Jitter.cpp/.h : Main JIT engine. Handles the code and delegates to an Emitter (Emitter.h) to generate machine code.
+Emitter.h : Interface definition for an emitter.
+SimpleX86Emitter.cpp/.h : Emits VERY simplified x86 machine code. No optimizations, reads/writes to memory FAR too often.
+OptimizedX86Emitter.cpp/.h : Emits "optimized" x86 machine code. Doesn't store unless it has to, etc.
+main.cpp : Driver. Can be called with BF code on the command line, otherwise it jits a "Hello, world"-type program.
+
+To compile:
+> cd jib
+> make
+
+To run:
+> ./jib
+or
+./jib ",.[,.]"
